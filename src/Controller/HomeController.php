@@ -40,4 +40,6 @@ class HomeController extends AbstractController
         return $this->render('home/testEntity.html.twig', ['laSerie'=>$laSerie]);
     }
 
+    
+
 }
