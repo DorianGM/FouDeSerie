@@ -21,4 +21,17 @@ class SerieController extends AbstractController
             'series' => $lesSeries,
         ]);
     }
+
+    /**
+     * @Route("/details/{id}", name="details")
+     */
+    public function lesDetails($id): Response
+    {
+        $repository=$this->getDoctrine()->getRepository(Serie::class);
+        $laSeries = $repository->find($id);
+
+        return $this->render('serie/details.html.twig', [
+            'serie' => $laSeries,
+        ]);
+    }
 }

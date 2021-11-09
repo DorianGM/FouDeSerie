@@ -10,12 +10,19 @@
 
 <div class="example-wrapper">
 
+
+
 <ul>
-{% for serie in series %}
-    <li>{{serie.titre}}</li>
-    <li><img src="{{serie.image}}" />
+{% for laserie in series %}
+<div class="card" style="width: 40rem;">
+  <img class="card-img-top" src="{{laserie.image}}">
+  <div class="card-body">
+    <h5 class="card-title">{{laserie.titre}}</h5>
+    <p class="card-text">{{laserie.resume}}</p>
+    <a href="{{path('details', {'id':laserie.id}) }}" class="btn btn-primary">En savoir plus </a>
+  </div>
+</div>
 {% endfor %}
 </ul>
 
-</div>
 {% endblock %}
