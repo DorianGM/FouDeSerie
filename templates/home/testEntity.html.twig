@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}News
+{% endblock %}
+
+{% block body %}
+	<div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold"></h1>
+        <p class="col-md-8 fs-4">{{laSerie.titre}}</p>
+        <p class="col-md-8 fs-4">{{laSerie.resume}}</p>
+      </div>
+    </div>
+{% endblock %}
