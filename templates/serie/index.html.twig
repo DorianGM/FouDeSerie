@@ -18,25 +18,26 @@
 	</style>
 
 	<div class="example-wrapper">
+		{{include('genre/liste.html.twig')}}
 
 
-		<ul>
-			<div class="row row-cols-1 row-cols-md-2 g-4">
-				{% for laserie in series %}
-					<div class="col">
-						<div class="card">
-							<img class="card-img-top" src="{{laserie.image}}">
-							<div class="card-body">
-								<h5 class="card-title">{{laserie.titre}}</h5>
-								<p class="card-text">{{laserie.resume}}</p>
-								<a href="{{path('details', {'id':laserie.id}) }}" class="btn btn-primary">En savoir plus
-								</a>
-							</div>
+		<div class="row row-cols-1 row-cols-md-2 g-4">
+
+			{% for laserie in series %}
+				<div class="col">
+					<div class="card">
+						<img class="card-img-top" src="{{laserie.image}}">
+						<div class="card-body">
+							<h5 class="card-title">{{laserie.titre}}</h5>
+							<p class="card-text">{{laserie.resume}}</p>
+							<a href="{{path('details', {'id':laserie.id}) }}" class="btn btn-primary">En savoir plus
+							</a>
 						</div>
-          </div>
-					{% endfor %}
+					</div>
 				</div>
-			</ul>
+			{% endfor %}
+		</div>
+    </div>
 
 
-		{% endblock %}
+	{% endblock %}

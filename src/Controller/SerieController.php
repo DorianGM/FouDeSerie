@@ -15,11 +15,15 @@ class SerieController extends AbstractController
      */
     public function index(): Response
     {
+        $repository=$this->getDoctrine()->getRepository(Genre::class);
+        $lesGenres = $repository->findAll();
         $repository=$this->getDoctrine()->getRepository(Serie::class);
         $lesSeries = $repository->findAll();
 
         return $this->render('serie/index.html.twig', [
             'series' => $lesSeries,
+            'genres' => $lesGenres
+            
         ]);
     }
 
