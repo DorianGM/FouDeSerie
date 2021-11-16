@@ -47,6 +47,7 @@ class SerieRepository extends ServiceEntityRepository
 
 
 
+
     /*
     public function findOneBySomeField($value): ?Serie
     {

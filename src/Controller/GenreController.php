@@ -11,12 +11,16 @@ use App\Entity\Serie;
 class GenreController extends AbstractController
 {
     /**
-     * @Route("/genre", name="genre")
+     * @Route("/genres", name="genres")
      */
-    public function index(): Response
+    public function listeGenres(): Response
     {
-        return $this->render('genre/index.html.twig', [
-            'controller_name' => 'GenreController',
+
+        $repository=$this->getDoctrine()->getRepository(Genre::class);
+        $lesGenres = $repository->findAll();
+
+        return $this->render('genre/liste.html.twig', [
+            'genres' => $lesGenres,
         ]);
     }
 
@@ -44,7 +48,6 @@ class GenreController extends AbstractController
         $entityManager->persist($leGenre);
         $entityManager->persist($leGenre2);
         
-
         $entityManager->persist($laSerie);
         $entityManager->flush();
 
@@ -54,4 +57,6 @@ class GenreController extends AbstractController
             'leGenre2' => $leGenre2,
         ]);
     }
+
+    
 }
