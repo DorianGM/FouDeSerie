@@ -15,7 +15,7 @@ class SerieController extends AbstractController
     public function index(): Response
     {
         $repository=$this->getDoctrine()->getRepository(Serie::class);
-        $lesSeries = $repository->lesDernieres();
+        $lesSeries = $repository->findAll();
 
         return $this->render('serie/index.html.twig', [
             'series' => $lesSeries,

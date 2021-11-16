@@ -20,9 +20,14 @@ class HomeController extends AbstractController
     /**
      * @Route("/news", name="news")
      */
-    public function news(): Response
+    public function index2(): Response
     {
-        return $this->render('home/news.html.twig');
+        $repository=$this->getDoctrine()->getRepository(Serie::class);
+        $lesSeries = $repository->LesDernieres();
+
+        return $this->render('serie/index.html.twig', [
+            'series' => $lesSeries,
+        ]);
     }
 
     /**

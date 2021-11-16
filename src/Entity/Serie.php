@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,6 +57,16 @@ class Serie
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Genre::class, mappedBy="lesSeries")
+     */
+    private $lesGenres;
+
+    public function __construct()
+    {
+        $this->lesGenres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,6 +129,33 @@ class Serie
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Genre[]
+     */
+    public function getLesGenres(): Collection
+    {
+        return $this->lesGenres;
+    }
+
+    public function addLesGenre(Genre $lesGenre): self
+    {
+        if (!$this->lesGenres->contains($lesGenre)) {
+            $this->lesGenres[] = $lesGenre;
+            $lesGenre->addLesSeries($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesGenre(Genre $lesGenre): self
+    {
+        if ($this->lesGenres->removeElement($lesGenre)) {
+            $lesGenre->removeLesSeries($this);
+        }
 
         return $this;
     }
