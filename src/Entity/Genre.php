@@ -25,7 +25,7 @@ class Genre
     private $libelle;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Serie::class, inversedBy="lesGenres")
+     * @ORM\ManyToMany(targetEntity=Serie::class, mappedBy="lesGenres")
      */
     private $lesSeries;
 

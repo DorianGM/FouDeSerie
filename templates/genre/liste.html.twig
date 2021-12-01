@@ -1,9 +1,10 @@
 <div class="container">
-<div class="row">
-<ul>
-{% for unGenre in genres %}
-    	<a href="{{path('legenre', {'id':unGenre.id}) }}" class="btn btn-primary" >{{unGenre.libelle}} </a>
-{% endfor %}
-</ul>
-</div>
+	<div class="row">
+		<ul>
+			{% for unGenre in genres %}
+				<a href="{{path('legenre', {'id':unGenre.id}) }}" class="btn btn-primary">{{unGenre.libelle}}
+				</a>
+			{% endfor %}
+		</ul>
+	</div>
 </div>

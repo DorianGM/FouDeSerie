@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div
+		class="container">
+		{# {{form(monForm)}} #}
+		{{form_start(monForm)}}
+        {{form_row(monForm.lesGenres)}}
+		{{form_row(monForm.titre)}}
+		{{form_row(monForm.resume)}}
+		{{form_row(monForm.duree)}}
+		{{form_row(monForm.premierediffusion)}}
+		{{form_row(monForm.image)}}
+        <input type="submit" value="sauvegarder">
+		{{form_end(monForm)}}
+	</div>
+{% endblock %}

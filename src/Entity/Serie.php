@@ -33,7 +33,7 @@ class Serie
     /**
      * @var string|null
      *
-     * @ORM\Column(name="resume", type="text", length=0, nullable=true)
+     * @ORM\Column(name="resume", type="text", length=255, nullable=true)
      */
     private $resume;
 
@@ -59,7 +59,7 @@ class Serie
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Genre::class, mappedBy="lesSeries")
+     * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="lesSeries")
      */
     private $lesGenres;
 
