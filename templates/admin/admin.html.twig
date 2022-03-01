@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SerieController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+    
+
+	<div class="example-wrapper">
+		<div class="row row-cols-1 row-cols-md-2 g-4">
+
+			{% for laserie in series %}
+				<div class="col">
+					<div class="card">
+						<img class="card-img-top" src="{{laserie.image}}">
+						<div class="card-body">
+							<h5 class="card-title">{{laserie.titre}}</h5>
+							<p class="card-text">{{laserie.resume}}</p>
+
+                            <form action="{{path('deleteSerie', {'id':laserie.id})}}" method="POST" onSubmit="return(confirm('Voulez vous supprimer la série ??????????????'))">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="token" value="{{csrf_token('delete_serie'~ laserie.id)}}">
+                            <input type="submit" class="btn btn-danger" value="Supprimer">
+                            </form>
+							{# <a href="{{path('deleteSerie', {'id':laserie.id, 'token':csrf_token('delete_serie')})}}" class="btn btn-primary">Supprimer #}
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+
+{% endblock %}
