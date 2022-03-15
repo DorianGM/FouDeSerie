@@ -63,6 +63,11 @@ class Serie
      */
     private $lesGenres;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->lesGenres = new ArrayCollection();
@@ -156,6 +161,18 @@ class Serie
         if ($this->lesGenres->removeElement($lesGenre)) {
             $lesGenre->removeLesSeries($this);
         }
+
+        return $this;
+    }
+
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): self
+    {
+        $this->likes = $likes;
 
         return $this;
     }

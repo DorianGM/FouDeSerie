@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+	{% block javascripts %}
+	<script type="text/javascript" src="{{asset("js/monScript.js")}}"></script>
+		<script type="text/javascript" src="{{asset("js/like.js")}}"></script>
+	{% endblock %}
+
 {% block title %}Hello SerieController!
 {% endblock %}
 
@@ -19,7 +24,7 @@
 
 	<div class="example-wrapper">
 		{{include('genre/liste.html.twig')}}
-		<div class="row row-cols-1 row-cols-md-2 g-4">
+		<div class="row row-cols-1 row-cols-md-3 g-4">
 
 			{% for laserie in series %}
 				<div class="col">
@@ -30,6 +35,12 @@
 							<p class="card-text">{{laserie.resume}}</p>
 							<a href="{{path('details', {'id':laserie.id}) }}" class="btn btn-primary">En savoir plus
 							</a>
+							<a href="{{ path('like', {'id': laserie.id})}}" class="js-a-likes">
+							<i class="far fa-thumbs-up"></i>
+							<span class="js-nb-like">{{laserie.likes}}</span>
+							<span >J'aime</span>
+							</a>
+							
 						</div>
 					</div>
 				</div>
